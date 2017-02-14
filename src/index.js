@@ -6,7 +6,7 @@ var firebase = require('firebase');
  * @param {Object} config This must contain either a `firebase_uri` property (deprecated) or a `databaseURL` property
  * @returns {{teams: {get, save, all}, channels: {get, save, all}, users: {get, save, all}}}
  */
-module.exports = function(config) {
+module.exports = function(config, name) {
 
     if (!config) {
         throw new Error('configuration is required.');
@@ -22,7 +22,7 @@ module.exports = function(config) {
         configuration = config;
     }
 
-    var app = firebase.initializeApp(config),
+    var app = firebase.initializeApp(config, name),
         database = app.database(),
         rootRef = database.ref(),
         teamsRef = rootRef.child('teams'),

@@ -59,6 +59,11 @@ describe('Firebase', function() {
             Storage({databaseURL: 'crystalbluepersuation'});
             firebaseMock.initializeApp.should.be.calledWith({databaseURL: 'crystalbluepersuation'});
         });
+
+        it('should initialize firebase with name', function() {
+            Storage({databaseURL: 'crystalbluepersuation'}, 'name');
+            firebaseMock.initializeApp.should.be.calledWith({databaseURL: 'crystalbluepersuation'}, 'name');
+        });
     });
 
     ['teams', 'channels', 'users'].forEach(function(method) {
